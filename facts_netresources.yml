@@ -16,10 +16,13 @@
         msg: "The serial number is:{{ ansible_net_serialnum }}"
     
     # Collect only the interfaces facts
-    - cisco.iosxr.iosxr_facts:
+    - name: Display resources facts
       gather_subset:
       - '!all'
       - '!min'
       gather_network_resources:
       - interfaces
-      - ospfv2
+      - prefix_lists
+      - opsf
+      debug:
+        msg: "Prefix-lists is: {{ ansible_prefix_lists }}"
