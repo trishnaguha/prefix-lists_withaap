@@ -29,5 +29,5 @@
 
   - name: Gather prefix-lists resource and minimal legacy facts
     cisco.ios.ios_facts:
-      gather_subset: min
-      gather_network_resources: ospfv2
+      gather_subset: prefix-lists
+      gather_network_resources: prefix-lists
