@@ -1,0 +1,51 @@
+---
+- name: configure prefix-lists
+  hosts: arista
+  gather_facts: false
+
+  tasks:
+
+  - name: use vlans resource module
+    arista.eos.vlans:
+      state: merged
+      config:
+        - name: desktops
+          vlan_id: 20
+        - name: servers
+          vlan_id: 30
+        - name: printers
+          vlan_id: 40
+        - name: DMZ
+          vlan_id: 50
+
+  - name: Merge prefix-lists with device config using resource module
+    arista.eos.eos_prefix_lists:
+      config:
+        - afi: "ipv4"
+          prefix_lists:
+            - name: "v401"
+              entries:
+                - sequence: 25
+                  action: "deny"
+                  address: "45.55.4.0/24"
+                - sequence: 100
+                  action: "permit"
+                  address: "11.11.2.0/24"
+                  match:
+                    masklen: 32
+                    operator: "ge"
+            - name: "v402"
+              entries:
+                - action: "deny"
+                  address: "10.1.1.0/24"
+                  sequence: 10
+                  match:
+                    masklen: 32
+                    operator: "ge"
+        - afi: "ipv6"
+          prefix_lists:
+            - name: "v601"
+              entries:
+                - sequence: 125
+                  action: "deny"
+                  address: "5000:1::/64"
