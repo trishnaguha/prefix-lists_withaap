@@ -14,11 +14,6 @@
       gather_subset:
       - '!hardware'
 
-  - name: Gather legacy and resource facts
-    cisco.ios.ios_facts:
-      gather_subset: prefix_lists
-      gather_network_resources: prefix-lists
-
   - name: Gather only the interfaces resource facts and no legacy facts
     cisco.ios.ios_facts:
       gather_subset:
@@ -26,18 +21,13 @@
       - '!min'
       gather_network_resources:
       - interfaces
-
-  - name: Gather interfaces resource and minimal legacy facts
-    cisco.ios.ios_facts:
-      gather_subset: min
-      gather_network_resources: interfaces
-
-  - name: Gather L2 interfaces resource and minimal legacy facts
-    cisco.ios.ios_facts:
-      gather_subset: min
-      gather_network_resources: l2_interfaces
-
+      
   - name: Gather L3 interfaces resource and minimal legacy facts
     cisco.ios.ios_facts:
       gather_subset: min
       gather_network_resources: l3_interfaces
+
+  - name: Gather prefix-lists resource and minimal legacy facts
+    cisco.ios.ios_facts:
+      gather_subset: min
+      gather_network_resources: prefix-lists
