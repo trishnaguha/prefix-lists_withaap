@@ -1,7 +1,7 @@
 ---
 - name: gather network resources information from routers
   hosts: cisco
-  gather_facts: false
+  gather_facts: true
 
   tasks:
     - name: gather router facts
@@ -15,8 +15,7 @@
       debug:
         msg: "The serial number is:{{ ansible_net_serialnum }}"
     
-    # Collect only the interfaces facts
-    - name: Display resources facts
+    - name: display resources facts
       gather_subset:
       - '!all'
       - '!min'
