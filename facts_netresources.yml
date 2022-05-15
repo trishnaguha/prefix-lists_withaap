@@ -16,6 +16,7 @@
         msg: "The serial number is:{{ ansible_net_serialnum }}"
     
     - name: display resources facts
+      cisco.ios.ios_facts:
       gather_subset:
       - '!all'
       - '!min'
