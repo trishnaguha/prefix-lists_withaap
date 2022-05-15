@@ -17,7 +17,7 @@
   - name: Gather legacy and resource facts
     cisco.ios.ios_facts:
       gather_subset: all
-      gather_network_resources: all
+      gather_network_resources: prefix-lists
 
   - name: Gather only the interfaces resource facts and no legacy facts
     cisco.ios.ios_facts:
