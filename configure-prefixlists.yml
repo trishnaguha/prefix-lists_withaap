@@ -1,6 +1,6 @@
 ---
 - name: configure prefix-lists
-  hosts: arista
+  hosts: arista, juniper
   gather_facts: false
 
   tasks:
