@@ -2,9 +2,9 @@
 - name: configure prefix-lists
   hosts: network
   gather_facts: false
+  connection: network_cli
 
   tasks:
-
   - name: Merge provided Prefix lists configuration
     cisco.ios.ios_prefix_lists:
       config:
