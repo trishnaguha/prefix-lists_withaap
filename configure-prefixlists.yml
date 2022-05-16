@@ -1,6 +1,6 @@
 ---
 - name: configure prefix-lists
-  hosts: arista, ios
+  hosts: network
   gather_facts: false
 
   tasks:
