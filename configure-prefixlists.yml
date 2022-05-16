@@ -1,6 +1,6 @@
 ---
 - name: configure prefix-lists
-  hosts: arista, juniper, ios
+  hosts: arista, ios
   gather_facts: false
 
   tasks:
@@ -51,19 +51,3 @@
                 - sequence: 125
                   action: "deny"
                   address: "5000:1::/64"
-                  
-  - name: Merge Junos prefix lists
-    junipernetworks.junos.junos_prefix_lists:
-      config:
-        - name: Internal
-          address_prefixes:
-            - 172.16.1.32
-            - 172.16.3.32
-        - name: Test1
-          dynamic_db: true
-        - name: Test2
-          address_prefixes:
-            - 172.16.2.32
-            - 172.16.7.32
-            - 172.16.9.32
-      state: merged
