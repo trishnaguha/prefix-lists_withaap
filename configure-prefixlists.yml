@@ -2,7 +2,6 @@
 - name: configure prefix-lists
   hosts: network
   gather_facts: false
-  connection: network_cli
 
   tasks:
   - name: Merge provided Prefix lists configuration
@@ -39,7 +38,6 @@
                   ge: 80
                   le: 100
                   sequence: 10
-      state: merged
     when: ('ios' in ansible_network_os)
 
   - name: Merge prefix-lists with Arista device config using resource module
