@@ -5,7 +5,7 @@
 
   tasks:
   - name: Merge IOSXE provided Prefix lists configuration
-    ios_prefix_lists:
+    cisco.ios.ios_prefix_lists:
       config:
         - afi: "ipv4"
           prefix_lists:
