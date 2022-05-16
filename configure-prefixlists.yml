@@ -18,6 +18,7 @@
                   ge: 80
                   le: 100
                   sequence: 10
+      when: ('ios' in ansible_network_os)
       state: merged
 
   - name: Merge prefix-lists with Arista device config using resource module
@@ -51,3 +52,4 @@
                 - sequence: 125
                   action: "deny"
                   address: "5000:1::/64"
+      when: ('eos' in ansible_network_os)
