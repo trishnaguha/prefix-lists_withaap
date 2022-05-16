@@ -4,30 +4,17 @@
   gather_facts: false
 
   tasks:
-  - name: Merge provided Prefix lists configuration
+  - name: Merge IOSXE provided Prefix lists configuration
     cisco.ios.ios_prefix_lists:
       config:
         - afi: "ipv4"
           prefix_lists:
             - name: "v401"
               entries:
-                - sequence: 25
-                  action: "deny"
-                  address: "45.55.4.0/24"
-                - sequence: 100
-                  action: "permit"
-                  address: "11.11.2.0/24"
-                  match:
-                    masklen: 32
-                    operator: "ge"
-            - name: "v402"
-              entries:
                 - action: "deny"
-                  address: "10.1.1.0/24"
-                  sequence: 10
-                  match:
-                    masklen: 32
-                    operator: "ge"
+                  prefix: "45.55.4.0/24"
+                  sequence: 25
+        
         - afi: ipv6
           prefix_lists:
             - name: test_ipv6
@@ -38,10 +25,11 @@
                   ge: 80
                   le: 100
                   sequence: 10
+      state: merged            
     when: ('ios' in ansible_network_os)
 
-  - name: Merge prefix-lists with Arista device config using resource module
-    arista.eos.eos_prefix_lists:
+  - name: Merge EOS provided Prefix lists configuration
+    cisco.eos.eos_prefix_lists:
       config:
         - afi: "ipv4"
           prefix_lists:
@@ -71,4 +59,7 @@
                 - sequence: 125
                   action: "deny"
                   address: "5000:1::/64"
-    when: ('eos' in ansible_network_os)
+      state: merged            
+    when: ('ios' in ansible_network_os)
+
+  
