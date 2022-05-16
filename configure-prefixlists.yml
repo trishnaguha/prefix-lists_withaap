@@ -29,7 +29,7 @@
     when: ('ios' in ansible_network_os)
 
   - name: Merge EOS provided Prefix lists configuration
-    cisco.eos.eos_prefix_lists:
+    arista.eos.eos_prefix_lists:
       config:
         - afi: "ipv4"
           prefix_lists:
