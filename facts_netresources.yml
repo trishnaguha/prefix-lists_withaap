@@ -4,30 +4,7 @@
   gather_facts: true
 
   tasks:
-  - name: Gather only the config and default facts
-    cisco.ios.ios_facts:
-      gather_subset:
-      - config
-
-  - name: Do not gather hardware facts
-    cisco.ios.ios_facts:
-      gather_subset:
-      - '!hardware'
-
-  - name: Gather only the interfaces resource facts and no legacy facts
-    cisco.ios.ios_facts:
-      gather_subset:
-      - '!all'
-      - '!min'
-      gather_network_resources:
-      - interfaces
-      
-  - name: Gather L3 interfaces resource and minimal legacy facts
-    cisco.ios.ios_facts:
-      gather_subset: min
-      gather_network_resources: l3_interfaces
-
-  - name: Gather OSPFv3 resource and minimal legacy facts
-    cisco.ios.ios_facts:
-      gather_subset: min
-      gather_network_resources: ospfv3
+  - name: run show version on remote devices
+    cisco.ios.ios_command:
+    commands: show version
+  
