@@ -8,6 +8,27 @@
   - name: Merge provided Prefix lists configuration
     cisco.ios.ios_prefix_lists:
       config:
+        - afi: "ipv4"
+          prefix_lists:
+            - name: "v401"
+              entries:
+                - sequence: 25
+                  action: "deny"
+                  address: "45.55.4.0/24"
+                - sequence: 100
+                  action: "permit"
+                  address: "11.11.2.0/24"
+                  match:
+                    masklen: 32
+                    operator: "ge"
+            - name: "v402"
+              entries:
+                - action: "deny"
+                  address: "10.1.1.0/24"
+                  sequence: 10
+                  match:
+                    masklen: 32
+                    operator: "ge"
         - afi: ipv6
           prefix_lists:
             - name: test_ipv6
