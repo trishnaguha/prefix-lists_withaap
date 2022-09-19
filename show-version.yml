@@ -4,11 +4,23 @@
   gather_facts: false
 
   tasks:
-  - name: run show version on remote devices
+  - name: run show version on remote cisco device
     register: result
     cisco.ios.ios_command:
       commands: show version
+    when: ('ios' in ansible_network_os)
 
   - name: Display version
     ansible.builtin.debug: 
+      var: result.stdout
+
+
+  - name: run show version on arista remote device
+    register: result
+    arista.eos.eos_command:
+      commands: show version
+    when: ('eos' in ansible_network_os)
+
+  - name: Display version
+    ansible.builtin.debug:
       var: result.stdout
