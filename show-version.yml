@@ -12,7 +12,7 @@
 
   - name: Display version
     ansible.builtin.debug: 
-      var: result.stdout
+      var: result
 
 
   - name: run show version on arista remote device
@@ -23,4 +23,4 @@
 
   - name: Display version
     ansible.builtin.debug:
-      var: result.stdout
+      var: result
