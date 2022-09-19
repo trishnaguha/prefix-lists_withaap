@@ -5,5 +5,10 @@
 
   tasks:
   - name: run show version on remote devices
+    register: result
     cisco.ios.ios_command:
       commands: show version
+
+  - name: Display version
+    ansible.builtin.debug: 
+      var: result
