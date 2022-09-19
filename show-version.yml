@@ -11,4 +11,4 @@
 
   - name: Display version
     ansible.builtin.debug: 
-      var: result
+      var: result.stdout
