@@ -1,6 +1,6 @@
 ---
 - name: configure prefix-lists
-  hosts: network
+  hosts: all
   gather_facts: false
 
   tasks:

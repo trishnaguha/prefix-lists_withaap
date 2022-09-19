@@ -1,10 +1,11 @@
 ---
 - name: gather network resources information from routers
-  hosts: cisco
+  hosts: all
   gather_facts: true
 
   tasks:
   - name: run show version on remote devices
     cisco.ios.ios_command:
-    commands: show version
+      commands: show version
+    when: ('ios' in ansible_network_os)
   

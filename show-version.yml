@@ -1,7 +1,9 @@
 ---
 - name: Test show version
-  hosts: cisco
+  hosts: all
   gather_facts: false
+  vars:
+    ansible_connection: network_cli
 
   tasks:
   - name: run show version on remote cisco device
