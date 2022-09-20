@@ -6,6 +6,5 @@
     - ansible.builtin.include_tasks: merged.yaml
     - ansible.builtin.include_tasks: deleted.yaml
     - ansible.builtin.include_tasks: gathered.yaml
-    - ansible.builtin.include_tasks: parsed.yaml
-    - ansible.builtin.include_tasks: rendered.yaml
+
 
