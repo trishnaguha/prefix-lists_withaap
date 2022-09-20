@@ -9,4 +9,5 @@
     parser:
       name: ansible.utils.textfsm
       template_path: "{{ role_path }}/cli_parse/templates/ios_show_version.textfsm"
-  set_fact: ios_textfsm_fact
+      set_fact: ios_textfsm_fact
+
