@@ -2,9 +2,9 @@
   hosts: cisco
   gather_facts: false
 
-#- ansible.builtin.include_tasks: _remove_config.yaml
-- ansible.builtin.include_tasks: merged.yaml
-- ansible.builtin.include_tasks: overriden.yaml
-- ansible.builtin.include_tasks: replaced.yaml
-- ansible.builtin.include_tasks: deleted.yaml
-- ansible.builtin.include_tasks: gathered.yaml
+  tasks:
+    - ansible.builtin.include_tasks: merged.yaml
+    - ansible.builtin.include_tasks: overriden.yaml
+    - ansible.builtin.include_tasks: replaced.yaml
+    - ansible.builtin.include_tasks: deleted.yaml
+    - ansible.builtin.include_tasks: gathered.yaml
