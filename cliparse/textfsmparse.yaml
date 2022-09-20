@@ -1,7 +1,7 @@
 - name: Run show version command
   register: previous_command
   cisco.ios.ios_command:
-    command: show version
+    commands: show version
 
 - name: "textfsm Pass text and command"
   ansible.utils.cli_parse:
