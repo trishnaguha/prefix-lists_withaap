@@ -3,7 +3,17 @@
   gather_facts: false
 
   tasks:
-    - ansible.builtin.include_tasks: pyyatsparse.yaml
-    - ansible.builtin.include_tasks: textfsmparse.yaml
-#    - ansible.builtin.include_tasks: deleted.yaml
-#    - ansible.builtin.include_tasks: gathered.yaml
+  - name: Install genie python package
+    ansible.builtin.pip:
+      name: genie
+    delegate_to: localhost
+
+  - name: Install pyats python package
+    ansible.builtin.pip:
+      name: pyats
+    delegate_to: localhost
+
+  - ansible.builtin.include_tasks: pyatsparse.yaml
+  - ansible.builtin.include_tasks: textfsmparse.yaml
+#  - ansible.builtin.include_tasks: deleted.yaml
+#  - ansible.builtin.include_tasks: gathered.yaml
