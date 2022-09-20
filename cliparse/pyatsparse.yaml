@@ -1,6 +1,6 @@
 - name: Run command and parse with pyats
   ansible.utils.cli_parse:
-    command: "show interface"
+    command: "show interfaces"
     parser:
         name: ansible.netcommon.pyats
   register: parser_output
@@ -10,7 +10,7 @@
   #  text: "{{ previous_command['stdout'] }}"
   #  parser:
   #      name: ansible.netcommon.pyats
-  #      command: show interface
+  #      command: show interfaces
   #register: parser_output
 
   #- name: Provide an OS to pyats to use an ios parser
@@ -18,6 +18,6 @@
   #  text: "{{ previous_command['stdout'] }}"
   #  parser:
   #      name: ansible.netcommon.pyats
-  #      command: show interface
+  #      command: show interfaces
   #      os: ios
   #register: parser_output
