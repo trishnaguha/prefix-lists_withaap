@@ -1,0 +1,9 @@
+- name: cli parse utility plugin
+  hosts: cisco
+  gather_facts: false
+
+  tasks:
+    - ansible.builtin.include_tasks: pyyatsparse.yaml
+    - ansible.builtin.include_tasks: textfsmparse.yaml
+#    - ansible.builtin.include_tasks: deleted.yaml
+#    - ansible.builtin.include_tasks: gathered.yaml
