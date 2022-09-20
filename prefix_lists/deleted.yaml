@@ -1,0 +1,17 @@
+---
+
+- block:
+    - ansible.builtin.include_tasks: _remove_config.yaml
+    - ansible.builtin.include_tasks: _populate_config.yaml
+
+    - name: Delete prefix list based on prefix name configured
+      register: result
+      cisco.ios.ios_prefix_lists:
+        state: deleted
+
+    - name: Display result 
+      ansible.builtin.debug:
+        var: result
+
+  always:
+    - ansible.builtin.include_tasks: _remove_config.yaml

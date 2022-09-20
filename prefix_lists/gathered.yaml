@@ -1,0 +1,17 @@
+---
+- ansible.builtin.include_tasks: _remove_config.yaml
+- ansible.builtin.include_tasks: _populate_config.yaml
+
+- block:
+    - name: Gather the provided configuration with the existing running configuration
+      register: result
+      cisco.ios.ios_prefix_lists:
+        config:
+        state: gathered
+
+    - name: Display Result
+      ansible.builtin.debug:
+        var: result
+
+  always:
+    - ansible.builtin.include_tasks: _remove_config.yaml
