@@ -60,7 +60,7 @@
 
     - name: Display Result
       ansible.builtin.debug:
-        var: result
+        var: result['after']
           
   always:
     - ansible.builtin.include_tasks: _remove_config.yaml
