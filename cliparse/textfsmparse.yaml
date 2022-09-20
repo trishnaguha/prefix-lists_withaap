@@ -9,5 +9,8 @@
     parser:
       name: ansible.utils.textfsm
       template_path: "{{ playbook_dir }}/templates/ios_show_version.textfsm"
-      set_fact: ios_textfsm_fact
+  register: ios_textfsm_fact
 
+- name: Display fact
+  ansible.builtin.debug:
+    var: ios_textfsm_fact
