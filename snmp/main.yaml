@@ -1,10 +1,9 @@
-- name: cisco prefix-lists configuration
+- name: cisco snmp server configuration
   hosts: cisco
   gather_facts: false
 
   tasks:
     - ansible.builtin.include_tasks: merged.yaml
     - ansible.builtin.include_tasks: overridden.yaml
-    - ansible.builtin.include_tasks: replaced.yaml
     - ansible.builtin.include_tasks: deleted.yaml
     - ansible.builtin.include_tasks: gathered.yaml

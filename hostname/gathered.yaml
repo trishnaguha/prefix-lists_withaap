@@ -1,0 +1,16 @@
+---
+- ansible.builtin.include_tasks: _populate_config.yaml
+
+- block:
+    - name: Ios_hostname gather - play
+      register: result
+      cisco.ios.ios_hostname:
+        config:
+        state: gathered
+
+    - name: Display Result
+      ansible.builtin.debug:
+        var: result
+        
+  always:
+    - ansible.builtin.include_tasks: _remove_config.yaml

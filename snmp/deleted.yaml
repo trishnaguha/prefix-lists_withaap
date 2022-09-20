@@ -1,0 +1,18 @@
+---
+- ansible.builtin.include_tasks: _remove_config.yaml
+
+- ansible.builtin.include_tasks: _populate_config.yaml
+
+- block:
+    - name: Ios_snmp_server deleted - play
+      register: result
+      cisco.ios.ios_snmp_server: &id001
+        config:
+        state: deleted
+
+    - name: Display Result
+      ansible.builtin.debug:
+        var: result
+
+  always:
+    - ansible.builtin.include_tasks: _remove_config.yaml

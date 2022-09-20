@@ -1,0 +1,24 @@
+---
+- ansible.builtin.include_tasks: _remove_config.yaml
+- ansible.builtin.include_tasks: _populate_config.yaml
+
+- block:
+    - name: Ios_snmp_server merged - play
+      register: result
+      cisco.ios.ios_snmp_server: &id001
+        config:
+          hosts:
+            - community_string: integrationComm
+              host: 192.0.2.10
+              informs: true
+              traps:
+                - isis
+              version: 2c
+        state: merged
+
+    - name: Display Result
+      ansible.builtin.debug:
+        var: result
+
+  always:
+    - ansible.builtin.include_tasks: _remove_config.yaml
