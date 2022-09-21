@@ -1,0 +1,11 @@
+- name: Run command and parse with xml
+  ansible.utils.cli_parse:
+    command: "show interfaces"
+    parser:
+      name: ansible.utils.xml
+      os: ios
+  register: ios_xml_text
+
+- name: Display fact
+  ansible.builtin.debug:
+    var: ios_xml_fact['parsed']

@@ -15,5 +15,5 @@
 
   - ansible.builtin.include_tasks: pyatsparse.yaml
   - ansible.builtin.include_tasks: textfsmparse.yaml
-#  - ansible.builtin.include_tasks: deleted.yaml
+  - ansible.builtin.include_tasks: parsexml.yaml
 #  - ansible.builtin.include_tasks: gathered.yaml
