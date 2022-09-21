@@ -1,8 +1,3 @@
-#- name: Run show version command
-#  register: previous_command
-#  cisco.ios.ios_command:
-#    commands: show version
-
 - name: "Run command and parse with textfsm"
   ansible.utils.cli_parse:
     command: 'show version'
@@ -13,4 +8,4 @@
 
 - name: Display fact
   ansible.builtin.debug:
-    var: ios_textfsm_fact
+    var: ios_textfsm_fact['parsed']
