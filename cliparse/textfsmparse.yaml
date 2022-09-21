@@ -1,11 +1,11 @@
-- name: Run show version command
-  register: previous_command
-  cisco.ios.ios_command:
-    commands: show version
+#- name: Run show version command
+#  register: previous_command
+#  cisco.ios.ios_command:
+#    commands: show version
 
-- name: "textfsm Pass text and command"
+- name: "Run command and parse with textfsm"
   ansible.utils.cli_parse:
-    text: "{{ previous_command['stdout'] }}"
+    command: 'show version'
     parser:
       name: ansible.utils.textfsm
       template_path: "{{ playbook_dir }}/templates/ios_show_version.textfsm"
