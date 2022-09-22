@@ -1,5 +1,5 @@
 - name: cli parse utility plugin
-  hosts: cisco
+  hosts: all
   gather_facts: false
 
   tasks:
@@ -13,7 +13,14 @@
       name: pyats
     delegate_to: localhost
 
-  - ansible.builtin.include_tasks: pyatsparse.yaml
-  - ansible.builtin.include_tasks: textfsmparse.yaml
-  - ansible.builtin.include_tasks: parsexml.yaml
-#  - ansible.builtin.include_tasks: gathered.yaml
+  - block:  
+    - ansible.builtin.include_tasks: cisco/pyatsparse.yaml
+    - ansible.builtin.include_tasks: cisco/textfsmparse.yaml
+   #  - ansible.builtin.include_tasks: parsexml.yaml
+    when: ('ios' in ansible_network_os)
+
+  - block:  
+    - ansible.builtin.include_tasks: arista/pyatsparse.yaml
+    - ansible.builtin.include_tasks: arista/textfsmparse.yaml
+   #  - ansible.builtin.include_tasks: parsexml.yaml
+    when: ('eos' in ansible_network_os)

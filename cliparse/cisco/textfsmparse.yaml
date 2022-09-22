@@ -3,7 +3,7 @@
     command: 'show version'
     parser:
       name: ansible.utils.textfsm
-      template_path: "{{ playbook_dir }}/templates/ios_show_version.textfsm"
+      template_path: "{{ playbook_dir }}/cisco/templates/ios_show_version.textfsm"
   register: ios_textfsm_fact
 
 - name: Display fact
