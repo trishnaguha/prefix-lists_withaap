@@ -1,17 +1,22 @@
 ---
-- ansible.builtin.include_tasks: _remove_config.yaml
-- ansible.builtin.include_tasks: _populate_config.yaml
+- name: ios_hostname deleted - play
+  register: result
+  cisco.ios.ios_hostname:
+    config:
+  state: deleted
+  when: ('ios' in ansible_network_os)
 
-- block:
-    - name: Ios_hostname deleted - play
-      register: result
-      cisco.ios.ios_hostname:
-        config:
-        state: deleted
+- name: Display Result
+  ansible.builtin.debug:
+    var: result
 
-    - name: Display Result
-      ansible.builtin.debug:
-        var: result
+- name: eos_hostname deleted - play
+  register: result1
+  arista.eos.eos_hostname:
+    config:
+  state: deleted
+  when: ('eos' in ansible_network_os)
 
-  always:
-    - ansible.builtin.include_tasks: _remove_config.yaml
+- name: Display Result
+  ansible.builtin.debug:
+    var: result1

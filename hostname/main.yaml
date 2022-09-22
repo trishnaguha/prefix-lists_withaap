@@ -1,10 +1,7 @@
-- name: cisco hostname configuration
-  hosts: cisco
+- name: hostname configuration
+  hosts: all
   gather_facts: false
 
   tasks:
     - ansible.builtin.include_tasks: merged.yaml
     - ansible.builtin.include_tasks: deleted.yaml
-    - ansible.builtin.include_tasks: gathered.yaml
-
-
