@@ -3,15 +3,12 @@
   gather_facts: false
 
   tasks:
-  - name: Install genie python package
+  - name: Install required python package
     ansible.builtin.pip:
-      name: genie
-    delegate_to: localhost
-    ignore_errors: yes
-
-  - name: Install pyats python package
-    ansible.builtin.pip:
-      name: pyats
+      name: "{{ item }}"
+    with_items:
+      - genie
+      - pyats
     delegate_to: localhost
     ignore_errors: yes
 
