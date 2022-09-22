@@ -7,20 +7,19 @@
     ansible.builtin.pip:
       name: genie
     delegate_to: localhost
+    ignore_errors: yes
 
   - name: Install pyats python package
     ansible.builtin.pip:
       name: pyats
     delegate_to: localhost
+    ignore_errors: yes
 
   - block:  
     - ansible.builtin.include_tasks: cisco/pyatsparse.yaml
     - ansible.builtin.include_tasks: cisco/textfsmparse.yaml
-   #  - ansible.builtin.include_tasks: parsexml.yaml
     when: ('ios' in ansible_network_os)
 
   - block:  
-    - ansible.builtin.include_tasks: arista/pyatsparse.yaml
     - ansible.builtin.include_tasks: arista/textfsmparse.yaml
-   #  - ansible.builtin.include_tasks: parsexml.yaml
     when: ('eos' in ansible_network_os)
