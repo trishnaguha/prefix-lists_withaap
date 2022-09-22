@@ -1,9 +1,9 @@
 - name: "Run command and parse with textfsm"
   ansible.utils.cli_parse:
-    command: 'show interfaces'
+    command: 'show version'
     parser:
       name: ansible.utils.textfsm
-      template_path: "{{ playbook_dir }}/arista/templates/eos_show_interfaces.textfsm"
+      template_path: "{{ playbook_dir }}/arista/templates/eos_show_version.textfsm"
   register: eos_textfsm_fact
 
 - name: Display fact
