@@ -1,23 +1,16 @@
 ---
-- ansible.builtin.include_tasks: _remove_config.yaml
-- ansible.builtin.include_tasks: _populate_config.yaml
+- name: Running overriden - ios_snmp_server - play
+  register: result
+  cisco.ios.ios_snmp_server:
+    config:
+      location: "location entry for snmp"
+      packet_size: 500
+      communities:
+        - acl_v4: acl_uq
+          name: communityOvverriden
+          rw: true
+    state: overridden
 
-- block:
-    - name: Ios_snmp_server overridden - play
-      register: result
-      cisco.ios.ios_snmp_server: &id001
-        config:
-          location: "location entry for snmp"
-          packet_size: 500
-          communities:
-            - acl_v4: acl_uq
-              name: communityOvverriden
-              rw: true
-        state: overridden
-
-    - name: Display Result
-      ansible.builtin.debug:
-        var: result
-
-  always:
-    - ansible.builtin.include_tasks: _remove_config.yaml
+- name: Display Result
+  ansible.builtin.debug:
+    var: result

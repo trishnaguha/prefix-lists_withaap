@@ -5,5 +5,5 @@
   tasks:
     - ansible.builtin.include_tasks: merged.yaml
     - ansible.builtin.include_tasks: overridden.yaml
-    - ansible.builtin.include_tasks: deleted.yaml
     - ansible.builtin.include_tasks: gathered.yaml
+    - ansible.builtin.include_tasks: deleted.yaml

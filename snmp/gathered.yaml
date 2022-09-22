@@ -1,16 +1,10 @@
 ---
-- ansible.builtin.include_tasks: _populate_config.yaml
+- name: Running gathered - ios_snmp_server - play
+  register: result
+  cisco.ios.ios_snmp_server:
+    config:
+    state: gathered
 
-- block:
-    - name: Ios_snmp_server gather - play
-      register: result
-      cisco.ios.ios_snmp_server:
-        config:
-        state: gathered
-
-    - name: Display Result
-      ansible.builtin.debug:
-        var: result
-        
-  always:
-    - ansible.builtin.include_tasks: _remove_config.yaml
+- name: Display Result
+  ansible.builtin.debug:
+    var: result
