@@ -3,7 +3,7 @@
   register: result
   cisco.ios.ios_hostname:
     config:
-  state: deleted
+    state: deleted
   when: ('ios' in ansible_network_os)
 
 - name: Display Result
@@ -14,7 +14,7 @@
   register: result1
   arista.eos.eos_hostname:
     config:
-  state: deleted
+    state: deleted
   when: ('eos' in ansible_network_os)
 
 - name: Display Result
