@@ -1,8 +1,8 @@
 ---
-- name: Ios_snmp_server parsed - play
+- name: Running parsed - ios_snmp_server play
   register: result
   cisco.ios.ios_snmp_server:
-    running_config: "{{ lookup('file', '_parsed.cfg') }}"
+    running_config: "{{ lookup('file', '{{ playbook_dir }}/_parsed.cfg') }}"
     state: parsed
 
 - name: Display Result
