@@ -1,10 +1,8 @@
-- name: cisco prefix-lists configuration
-  hosts: cisco
+- name: prefix-lists configuration
+  hosts: all
   gather_facts: false
 
   tasks:
     - ansible.builtin.include_tasks: merged.yaml
-    - ansible.builtin.include_tasks: overridden.yaml
-    - ansible.builtin.include_tasks: replaced.yaml
-    - ansible.builtin.include_tasks: deleted.yaml
     - ansible.builtin.include_tasks: gathered.yaml
+    - ansible.builtin.include_tasks: deleted.yaml

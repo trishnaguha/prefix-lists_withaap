@@ -1,17 +1,21 @@
 ---
+- name: Ios - Delete prefix list based on prefix name configured
+  register: result
+  cisco.ios.ios_prefix_lists:
+    state: deleted
+  when: ('ios' in ansible_network_os)
 
-- block:
-    - ansible.builtin.include_tasks: _remove_config.yaml
-    - ansible.builtin.include_tasks: _populate_config.yaml
+- name: Display result 
+  ansible.builtin.debug:
+    var: result
 
-    - name: Delete prefix list based on prefix name configured
-      register: result
-      cisco.ios.ios_prefix_lists:
-        state: deleted
+- name: EOS - Delete prefix list based on prefix name configured
+  register: result1
+  arista.eos.eos_prefix_lists:
+    state: deleted
+  when: ('eos' in ansible_network_os)
 
-    - name: Display result 
-      ansible.builtin.debug:
-        var: result
+- name: Display result 
+  ansible.builtin.debug:
+    var: result1
 
-  always:
-    - ansible.builtin.include_tasks: _remove_config.yaml
