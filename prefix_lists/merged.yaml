@@ -92,8 +92,8 @@
               - sequence: 125
                 action: "deny"
                 address: "5000:1::/64"
-      state: merged
-    when: ('eos' in ansible_network_os)
+    state: merged
+  when: ('eos' in ansible_network_os)
 
 - name: Display Result
   ansible.builtin.debug:
